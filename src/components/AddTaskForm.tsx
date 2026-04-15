@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
-import { useAddTask } from '@/hooks/useAddTask'
+import { useAddTask } from '@/hooks/task/useAddTask'
 
 export function AddTaskForm() {
   const [title, setTitle] = useState('')

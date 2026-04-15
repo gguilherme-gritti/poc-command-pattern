@@ -1,6 +1,6 @@
-import { useTasks } from '@/hooks/useTasks'
-import { useToggleTask } from '@/hooks/useToggleTask'
-import { useDeleteTask } from '@/hooks/useDeleteTask'
+import { useTasks } from '@/hooks/task/useTasks'
+import { useToggleTask } from '@/hooks/task/useToggleTask'
+import { useDeleteTask } from '@/hooks/task/useDeleteTask'
 import { TaskItem } from './TaskItem'
 import { ListChecks } from 'lucide-react'
 
@@ -13,10 +13,7 @@ export function TaskList() {
     return (
       <div className="flex flex-col gap-3 py-8">
         {Array.from({ length: 3 }).map((_, i) => (
-          <div
-            key={i}
-            className="h-12 animate-pulse rounded-lg bg-muted"
-          />
+          <div key={i} className="h-12 animate-pulse rounded-lg bg-muted" />
         ))}
       </div>
     )

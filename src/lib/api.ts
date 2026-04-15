@@ -2,10 +2,25 @@ import type { Task } from './types'
 
 const LATENCY_MS = 400
 
-let tasks: Task[] = [
-  { id: '1', title: 'Estudar Command Pattern', done: false, createdAt: Date.now() - 3000 },
-  { id: '2', title: 'Configurar React Query', done: true, createdAt: Date.now() - 2000 },
-  { id: '3', title: 'Implementar Undo', done: false, createdAt: Date.now() - 1000 },
+const tasks: Task[] = [
+  {
+    id: '1',
+    title: 'Estudar Command Pattern',
+    done: false,
+    createdAt: Date.now() - 3000,
+  },
+  {
+    id: '2',
+    title: 'Configurar React Query',
+    done: true,
+    createdAt: Date.now() - 2000,
+  },
+  {
+    id: '3',
+    title: 'Implementar Undo',
+    done: false,
+    createdAt: Date.now() - 1000,
+  },
 ]
 
 function delay(ms = LATENCY_MS) {

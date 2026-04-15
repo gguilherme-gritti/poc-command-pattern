@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
-import { AddTaskCommand } from '@/commands/AddTaskCommand'
-import { useTaskReceiver } from '@/lib/TaskReceiver'
-import { useCommandManager } from './useCommandManager'
+import { AddTaskCommand } from '@/commands/task/AddTaskCommand'
+import { useTaskReceiver } from '@/lib/receivers/TaskReceiver'
+import { useCommandManager } from '@/hooks/useCommandManager'
 
 /**
  * Client do Command Pattern: cria o Command com o Receiver

@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
-import { DeleteTaskCommand } from '@/commands/DeleteTaskCommand'
-import { useTaskReceiver } from '@/lib/TaskReceiver'
+import { DeleteTaskCommand } from '@/commands/task/DeleteTaskCommand'
+import { useTaskReceiver } from '@/lib/receivers/TaskReceiver'
 import type { Task } from '@/lib/types'
-import { useCommandManager } from './useCommandManager'
+import { useCommandManager } from '../useCommandManager'
 
 export function useDeleteTask() {
   const { execute } = useCommandManager()

@@ -1,5 +1,5 @@
 import type { Task } from '@/lib/types'
-import type { TaskReceiver } from '@/lib/TaskReceiver'
+import type { TaskReceiver } from '@/lib/receivers/TaskReceiver'
 import type { Command } from './Command'
 
 export class DeleteTaskCommand implements Command {
