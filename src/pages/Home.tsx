@@ -1,12 +1,19 @@
 import { useState } from 'react'
-import { Button } from '../components/Button'
-import { Card } from '../components/Card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 
 const features = [
   {
     title: 'React 19',
     description:
-      'Última versão do React com Server Components, Actions e melhorias de performance.',
+      'Última versão do React com melhorias de performance e APIs modernas.',
     emoji: '⚛️',
   },
   {
@@ -24,13 +31,13 @@ const features = [
   {
     title: 'TailwindCSS 4',
     description:
-      'Framework CSS utility-first com nova engine, mais rápido e sem configuração.',
+      'Utility-first com a nova engine do Tailwind e integração via @tailwindcss/vite.',
     emoji: '🎨',
   },
   {
-    title: 'tailwind-variants',
+    title: 'shadcn/ui',
     description:
-      'Variantes tipadas para componentes, combinando o poder do Tailwind com type-safety.',
+      'Componentes acessíveis (Radix) que você copia e adapta — base sólida para o design system.',
     emoji: '🧩',
   },
   {
@@ -45,36 +52,34 @@ export function Home() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-xl font-bold text-gray-900">
+    <div className="min-h-svh bg-muted/40">
+      <header className="border-b bg-card">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+          <h1 className="text-xl font-semibold tracking-tight text-foreground">
             POC Command Pattern
           </h1>
           <nav className="flex gap-2">
             <Button variant="ghost" size="sm">
               Docs
             </Button>
-            <Button variant="primary" size="sm">
-              GitHub
-            </Button>
+            <Button size="sm">GitHub</Button>
           </nav>
         </div>
       </header>
 
       <main>
-        <section className="max-w-5xl mx-auto px-4 py-20 text-center">
-          <span className="inline-block bg-indigo-100 text-indigo-700 text-sm font-medium px-3 py-1 rounded-full mb-6">
+        <section className="mx-auto max-w-5xl px-4 py-16 text-center sm:py-20">
+          <Badge variant="secondary" className="mb-6">
             Boilerplate pronto para produção
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+          </Badge>
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             React + Vite + TypeScript
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
-            Setup moderno e escalável com TailwindCSS, tailwind-variants, ESLint
-            e Prettier. Tudo configurado e pronto para começar.
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground">
+            Setup moderno com TailwindCSS 4, shadcn/ui, ESLint e Prettier. Base
+            para compor telas com consistência visual e acessibilidade.
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" onClick={() => setCount((c) => c + 1)}>
               Contador: {count}
             </Button>
@@ -84,48 +89,57 @@ export function Home() {
           </div>
         </section>
 
-        <section className="max-w-5xl mx-auto px-4 pb-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section className="mx-auto max-w-5xl px-4 pb-16">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
-              <Card key={feature.title} hoverable>
-                <div className="text-3xl mb-3">{feature.emoji}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
+              <Card
+                key={feature.title}
+                className="transition-shadow hover:shadow-md"
+              >
+                <CardHeader>
+                  <div className="mb-1 text-3xl" aria-hidden>
+                    {feature.emoji}
+                  </div>
+                  <CardTitle>{feature.title}</CardTitle>
+                  <CardDescription>{feature.description}</CardDescription>
+                </CardHeader>
               </Card>
             ))}
           </div>
         </section>
 
-        <section className="max-w-5xl mx-auto px-4 pb-20">
-          <Card variant="elevated" padding="lg">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              Exemplo de Variantes (tailwind-variants)
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="primary" size="sm">
-                Primary SM
-              </Button>
-              <Button variant="secondary" size="md">
-                Secondary MD
-              </Button>
-              <Button variant="outline" size="lg">
-                Outline LG
-              </Button>
-              <Button variant="ghost" size="md">
-                Ghost MD
-              </Button>
-            </div>
+        <section className="mx-auto max-w-5xl px-4 pb-20">
+          <Card>
+            <CardHeader>
+              <CardTitle>Variantes do Button (shadcn/ui)</CardTitle>
+              <CardDescription>
+                Mesmo componente, estilos controlados por variant e size —
+                padrão CVA + tokens do tema.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="default" size="sm">
+                  Default SM
+                </Button>
+                <Button variant="secondary" size="default">
+                  Secondary MD
+                </Button>
+                <Button variant="outline" size="lg">
+                  Outline LG
+                </Button>
+                <Button variant="ghost" size="default">
+                  Ghost MD
+                </Button>
+              </div>
+            </CardContent>
           </Card>
         </section>
       </main>
 
-      <footer className="bg-white border-t border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 py-6 text-center text-sm text-gray-500">
-          Feito com React, Vite, TypeScript e TailwindCSS
+      <footer className="border-t bg-card">
+        <div className="mx-auto max-w-5xl px-4 py-6 text-center text-sm text-muted-foreground">
+          Feito com React, Vite, TypeScript e shadcn/ui
         </div>
       </footer>
     </div>
